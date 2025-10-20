@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo - Aplicação Desktop</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h1> Walber Victor </h1>
+    <label for = "nome"> Nome: </label>
+    <input type="text" id="nome" placeholder="Adicione seu nome">
+    <label for="numero"> Numero: </label>
+    <input type="number" id="numero" placeholder="Adicione um numero">
+    <br><br>
+    <button id="botao" onclick="pegarnumero()">  Enviar </button>
+     <p id="Resultado">
+        
+     </p>
+    <script>
+     function pegarnumero(){
+        let conteudo = document.getElementById('numero').value
+        document.getElementById('numero').value = ""
+        
+        if(conteudo>0){
+            document.getElementById('Resultado').innerHTML = "O numero é positiovo!"
+        }else{
+             document.getElementById('Resultado').innerHTML = "O numero é negativo!"
+        }
+     }
+    </script>
+
+</body>
+</html>
