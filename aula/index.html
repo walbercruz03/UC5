@@ -8,6 +8,14 @@
      body {
          background-color: aquamarine;
          font-family: Arial, Helvetica, sans-serif;
+
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+
+         height: 100vh;
+         margin: 0;
      }
      label{
         font-size: 16px;
@@ -15,32 +23,30 @@
      }
      button{
         border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
      }
     </style>
 </head>
 <body>
     <h1> Walber Victor </h1>
-    <label for = "nome"> Nome: </label>
-    <input type="text" id="nome" placeholder="Adicione seu nome">
-    <label for="numero"> Numero: </label>
+
+    <label for="numero"> Número: </label>
     <input type="number" id="numero" placeholder="Adicione um numero">
     <br><br>
     <button id="botao" onclick="pegarnumero()">  Enviar </button>
      <p id="Resultado">
         
      </p>
-    <script>
-     function pegarnumero(){
-        let conteudo = document.getElementById('numero').value
-        document.getElementById('numero').value = ""
-        
-        if(conteudo>0){
-            document.getElementById('Resultado').innerHTML = "O numero é positiovo!"
-        }else{
-             document.getElementById('Resultado').innerHTML = "O numero é negativo!"
-        }
-     }
-    </script>
+     <label for="nota1"> Primeira nota: </label>
+     <input type="number" id="nota1" placeholder="Adicione a nota">
+     <br>
+     <button id="botaoo" onclick="pegarnota()">  Enviar </button>
+
+
+
+     
+    <script src="funcoes.js"> </script>
 
 </body>
 </html>
