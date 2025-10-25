@@ -6,7 +6,7 @@ const janela = new BrowserWindow({
     heigth: 800,
     title: "Exemplo - Aplicação Desktop"
 })
-janela.loadFile('index.html')
+janela.loadFile('conversor.html')
 
 }
 

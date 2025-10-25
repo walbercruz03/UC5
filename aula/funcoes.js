@@ -20,3 +20,25 @@ function pegarnumero(){
     }
     
 }
+
+function pegarnota(){
+    
+}
+
+
+function pegarvalor(){
+    let operacao = Number(document.getElementById('valor').value)
+    document.getElementById('valor').value
+    let valor = Number (document.getElementById('valor').value)
+    let resultado = 0
+
+    if(!valor){
+        document.getElementById('Converteu').innerText = "Digite um valor valido!"
+        return;
+    }
+    const cotacoes = {
+        dolar:
+    }
+
+
+}

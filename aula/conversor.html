@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de notas</title>
+    <style>
+        body {
+         background-color: aquamarine;
+         font-family: Arial, Helvetica, sans-serif;
+
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+
+         height: 100vh;
+         margin: 0;
+     }
+     label{
+        font-size: 16px;
+        font-style: italic;
+     }
+     button{
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+     }
+    </style>
+</head>
+<body>
+   <h1> Conversor </h1>
+
+   <label for="valor"> Convertendo: </label>
+   <input type="number" id="valor" placeholder="Digite o valor">
+   <br>
+   <button id="botao" onclick="pegarvalor()">Dólar</button>
+   <br>
+   <button id="botao" onclick="pegarvalor()">Euro</button>
+   <br>
+   <button id="botao" onclick="pegarvalor()">Peso</button>
+   <br>
+   <button id="botao" onclick="pegarvalor()">Libra</button>
+   <br>
+   <button id="botao" onclick="pegarvalor()">Franco</button>
+   <br>
+   <p id="Converteu">
+        
+    </p>
+   <script
+</body>
+</html>
