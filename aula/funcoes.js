@@ -26,7 +26,7 @@ function pegarnota(){
 }
 
 
-function pegarvalor(){
+function pegarvalor(moeda){
     let operacao = Number(document.getElementById('valor').value)
     document.getElementById('valor').value
     let valor = Number (document.getElementById('valor').value)
@@ -37,8 +37,20 @@ function pegarvalor(){
         return;
     }
     const cotacoes = {
-        dolar:
+        dolar:5.424,
+        euro:6.353,
+        peso:0.0042,
+        libra:7.326,
+        franco:6.753
+
     }
+    if(!cotacoes[moeda]){
+        document.getElementById('Converteu').innerText = "Moeda invalida!"
+        return;
+    }
+    resultado = valor/cotacoes[moeda]
 
-
+    document.getElementById('Converteu').innerText =
+    `${valor.toFixed(2)} Reais = ${resultado.toFixed(2)} ${moeda.toUpperCase()} `
+     
 }
