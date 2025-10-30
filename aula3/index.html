@@ -33,21 +33,37 @@
 </head>
 <body>
     <h1>Calculadora</h1>
-    <label for="valor">Calculando</label>
-    <input type="number" id="calcular" placeholder="Digite o valor">
+    <label for="calcular">Calculando</label>
+    <input type="text" id="calcular" placeholder="Digite o valor">
     
     
     <div>
-    <button>1</button> <button>2</button> <button>3</button> <button>%</button>
+    <button onclick="adicionar('1')">1</button> <button onclick="adicionar('2')">2</button> <button onclick="adicionar('3')">3</button> <button onclick="adicionar('%')">%</button>
     </div>
     <div>
-    <button>4</button> <button>5</button> <button>6</button> <button>+</button>
+    <button onclick="adicionar('4')">4</button> <button onclick="adicionar('5')">5</button> <button onclick="adicionar('6')">6</button> <button onclick="adicionar('+')">+</button>
     </div>
     <div>
-    <button>7</button> <button>8</button> <button>9</button> <button>/</button>
+    <button onclick="adicionar('7')">7</button>  <button onclick="adicionar ('8')">8</button> <button onclick="adicionar('9')">9</button> <button onclick="adicionar('/')">/</button>
     </div>
     <div> 
-    <button> Limpar</button> <button>0</button> <button> C </button>
+    <button onclick="limpar()">Limpar</button><button onclick="adicionar('0')">0</button><button onclick="adicionar('*')">x</button><button onclick="calcular()">=</button>
     </div>
+    <script>
+    function adicionar (valor){
+        document.getElementById('calcular').value += valor;
+    }
+    function limpar(){
+        document.getElementById('calcular').value = ''
+    }
+    function calcular(){
+        const campo = document.getElementById('calcular')
+        try{
+            campo.value = eval (campo.value)
+        } catch{
+            campo.value = 'Erro'
+        }
+    }
+    </script>
 </body>
 </html>
