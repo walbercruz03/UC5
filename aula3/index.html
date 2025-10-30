@@ -19,16 +19,25 @@
         font-size: 16px;
         font-style: italic;
      }
-     .botoes {
-  display: flex;
-  gap: 10px;
+     input {
+  width: 33%;
+  height: 33px;
+  font-size: 22px;
+  border-radius: 15px;
+  padding: 8px;
 }
-     button{
-        border-radius: 5px;
-        padding: 5px 10px;
-        cursor: pointer;
-        font-size: 16px;
-     }
+    .botoes {
+  display: grid;
+  grid-template-columns: repeat(4, 70px);
+  gap: 10px;
+  margin-top: 20px;
+}
+button {
+  border-radius: 4px;
+  padding: 7px;
+  cursor: pointer;
+  font-size: 15px;
+}
     </style>
 </head>
 <body>
@@ -37,18 +46,27 @@
     <input type="text" id="calcular" placeholder="Digite o valor">
     
     
-    <div>
-    <button onclick="adicionar('1')">1</button> <button onclick="adicionar('2')">2</button> <button onclick="adicionar('3')">3</button> <button onclick="adicionar('-')">-</button>
-    </div>
-    <div>
-    <button onclick="adicionar('4')">4</button> <button onclick="adicionar('5')">5</button> <button onclick="adicionar('6')">6</button> <button onclick="adicionar('+')">+</button>
-    </div>
-    <div>
-    <button onclick="adicionar('7')">7</button>  <button onclick="adicionar ('8')">8</button> <button onclick="adicionar('9')">9</button> <button onclick="adicionar('/')">/</button>
-    </div>
-    <div> 
-    <button onclick="limpar()">Limpar</button><button onclick="adicionar('0')">0</button><button onclick="adicionar('*')">x</button><button onclick="calcular()">=</button>
-    </div>
+    <div class="botoes">
+    <button onclick="adicionar('1')">1</button>
+    <button onclick="adicionar('2')">2</button>
+    <button onclick="adicionar('3')">3</button>
+    <button onclick="adicionar('-')">-</button>
+
+    <button onclick="adicionar('4')">4</button>
+    <button onclick="adicionar('5')">5</button>
+    <button onclick="adicionar('6')">6</button>
+    <button onclick="adicionar('+')">+</button>
+
+    <button onclick="adicionar('7')">7</button>
+    <button onclick="adicionar('8')">8</button>
+    <button onclick="adicionar('9')">9</button>
+    <button onclick="adicionar('/')">/</button>
+
+    <button onclick="limpar()">Limpar</button>
+    <button onclick="adicionar('0')">0</button>
+    <button onclick="adicionar('*')">x</button>
+    <button onclick="calcular()">=</button>
+</div>
     <script>
     function adicionar (valor){
         document.getElementById('calcular').value += valor;
