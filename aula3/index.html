@@ -20,7 +20,7 @@
         font-style: italic;
      }
      input {
-  width: 33%;
+  width: 16%;
   height: 33px;
   font-size: 22px;
   border-radius: 15px;
@@ -67,21 +67,49 @@ button {
     <button onclick="adicionar('*')">x</button>
     <button onclick="calcular()">=</button>
 </div>
-    <script>
-    function adicionar (valor){
-        document.getElementById('calcular').value += valor;
-    }
-    function limpar(){
-        document.getElementById('calcular').value = ''
-    }
-    function calcular(){
-        const campo = document.getElementById('calcular')
-        try{
-            campo.value = eval (campo.value)
-        } catch{
-            campo.value = 'Erro'
+<div>
+    <br>
+    <button onclick="historico()" >Histórico</button>
+</div>
+<div id="area"></div>
+<div>
+    <><><><><><><><><>
+</div>
+<div>
+    <button onclick="criarJanela1()">Abrir Janela</button>
+</div>
+
+    <script >
+        const input = document.getElementById('calcular');
+        const area = document.getElementById('area');
+        let historicoOperacoes = [];
+
+        function adicionar(valor) {
+            input.value += valor;
         }
-    }
+
+        function limpar() {
+            input.value = '';
+        }
+
+        function calcular() {
+            try {
+                const expressao = input.value.replace('x', '*');
+                const resultado = eval(expressao);
+                historicoOperacoes.push(`${input.value} = ${resultado}`);
+                input.value = resultado;
+            } catch (error) {
+                input.value = 'Erro';
+            }
+        }
+
+        function historico() {
+            area.innerText = historicoOperacoes.join('\n');
+        }
+
+        function criarJanela1() {
+        window.api.criarJanela()
+}
     </script>
 </body>
 </html>
