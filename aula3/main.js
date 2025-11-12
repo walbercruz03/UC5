@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 let janela = null 
+let janela2 = null
 
 function criarJanela(){
     nativeTheme.themeSource = 'light' // modo claro/escuro da janela
@@ -22,15 +23,33 @@ function criarJanela(){
         }
     })
     janela.loadFile('index.html') 
-    //janela.webContents.openDevTools()
-    //janela.webContents.setZoomFactor(1) //deixando o zoom em 100%
     
-    //janela.removeMenu() //remover menu padrão do electron
+    
 
     janela.webContents.on('did-finish-load', () => { //evento disparado quando a janela termina de carregar
         janela.webContents.setZoomFactor(1.0) 
     }) 
     Menu.setApplicationMenu(Menu.buildFromTemplate(template))
+}
+
+
+function criarJanela2(){
+    nativeTheme.themeSource = 'light' // modo claro/escuro da janela
+    janela = new BrowserWindow({ 
+        width: 400, height: 400,
+        title: "Aplicação Desktop",       
+        webPreferences: {
+            nodeIntegration: false,           
+            contextIsolation: true,
+            devTools: true,
+            preload: path.join(__dirname,'preload.js'),
+            sandbox: false,
+            setZoomFactor: 1.0 //deixando o zoom em 100%
+        }
+    })
+    janela.loadFile('index2.html') 
+    
+
 }
 const template = [
     {label: "Aplicação", 
@@ -38,7 +57,7 @@ const template = [
             {label: "Novo", click: () => criarJanela()},
             {type: 'separator'},
             {label: "Sair", role: 'quit'}]}, 
-    {label: "Sobre"},
+    {label: "Sobre", click: () => criarJanela2()},
     {label: 'Exibir', 
         submenu: [{label: 'Aparência', 
             submenu:[
@@ -93,7 +112,7 @@ ipcMain.on('criar-janela', () => { //recebe o evento do renderer para criar uma 
 })
 
 ipcMain.handle('calc-soma', (event, n1 , n2) => { // recebe o evento do renderer para calcular a soma
-    console(n1+n2)
+    console.log(n1+n2)
     return n1+n2
 })
 
