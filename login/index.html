@@ -4,15 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    
 </head>
 <body>
     <h1>Bem-Vindo!</h1>
-    <input type="test" placeholder="Usuário">
+    <input type="text" id="usuario" placeholder="Usuário">
     <br><br>
-    <input type="password" placeholder="Senha">
+    <input type="password" id="senha" placeholder="Senha">
     <br>
-    <span style="font-size:14px;">Não tem cadastro? <a href="index2.html" id="novoCadastro">Clique aqui</a></span>
+    <span style="font-size:14px;">Não tem cadastro? <a href="#" id="novoCadastro">Clique aqui</a></span>
     <br><br>
     <button id="confirmar" >Confirmar</button>
 </body>
+<script src="renderer.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('confirmar');
+    const usuarioInput = document.getElementById("usuario");
+    const senhaInput = document.getElementById("senha");
+
+    btn.addEventListener('click', async () => {
+        const usuario = usuarioInput.value;
+        const senha = senhaInput.value;
+        const sucesso = await window.api.login(usuario, senha);
+        if (sucesso) {
+            window.location.href = 'index3.html';
+        } else {
+            alert('Usuário ou senha inválidos!');
+        }
+    });
+});
+</script>
 </html>

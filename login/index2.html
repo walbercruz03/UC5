@@ -8,16 +8,45 @@
 <body>
     <h1>Cadastro usuario</h1>
     <input type="text" placeholder="Nome Completo">
-    <br><br>
+    <br>
     <input type="text" placeholder="Email">
-    <br><br>
+    <br>
     <input type="text" placeholder="Usuário">
-    <br><br>
+    <br>
     <input type="date" placeholder="Data de Nascimento">
-    <br><br>
+    <br>
     <input type="password" placeholder="Senha">
-    <br><br>
+    <br>
     <input type="password" placeholder="Confirmar Senha">
+    <br>
+    <button>Cadastrar</button>
 
+    <script>
+    // Seleciona os campos
+    const nome = document.querySelector('input[placeholder="Nome Completo"]');
+    const email = document.querySelector('input[placeholder="Email"]');
+    const usuario = document.querySelector('input[placeholder="Usuário"]');
+    const dataNasc = document.querySelector('input[placeholder="Data de Nascimento"]');
+    const senha = document.querySelector('input[placeholder="Senha"]');
+    const confirmarSenha = document.querySelector('input[placeholder="Confirmar Senha"]');
+    const btn = document.querySelector('button');
+
+    btn.addEventListener('click', () => {
+        if (senha.value !== confirmarSenha.value) {
+            alert('As senhas não coincidem!');
+            return;
+        }
+        // Envia os dados para o main.js via preload (IPC)
+        window.api.cadastrarUsuario({
+            nome: nome.value,
+            email: email.value,
+            usuario: usuario.value,
+            dataNasc: dataNasc.value,
+            senha: senha.value
+        });
+        alert('Cadastro realizado com sucesso!');
+        window.close();
+    });
+    </script>
 </body>
 </html>
