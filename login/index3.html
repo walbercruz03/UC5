@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <ha1>Bem-Vindo</ha1>
+    <h1 id="oi"></h1>
 </body>
+<script>
+// window.addEventListener('DOMContentLoaded', () => {
+//     document.body.insertAdjacentHTML('beforeend', '<h2>Login bem sucedido!</h2>');
+// });
+    document.getElementById('oi').innerText = 'Bem-Vindo, ' + localStorage.getItem('usuario') + '!';
+
+</script>
 </html>
