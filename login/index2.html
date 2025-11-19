@@ -7,28 +7,28 @@
 </head>
 <body>
     <h1>Cadastro usuario</h1>
-    <input type="text" placeholder="Nome Completo">
+    <input type="text" id="nomecomp" placeholder="Nome Completo">
     <br>
-    <input type="text" placeholder="Email">
+    <input type="text" id="email" placeholder="Email">
     <br>
     <input type="text" id="nome" placeholder="Usuário">
     <br>
-    <input type="date" placeholder="Data de Nascimento">
+    <input type="date" id="datansc" placeholder="Data de Nascimento">
     <br>
-    <input type="password" placeholder="Senha">
+    <input type="password" id="senha" placeholder="Senha">
     <br>
-    <input type="password" placeholder="Confirmar Senha">
+    <input type="password" id="confsenha" placeholder="Confirmar Senha">
     <br>
     <button>Cadastrar</button>
 
     <script>
     // Seleciona os campos
-    const nome = document.querySelector('input[placeholder="Nome Completo"]');
-    const email = document.querySelector('input[placeholder="Email"]');
-    const usuario = document.querySelector('input[placeholder="Usuário"]');
-    const dataNasc = document.querySelector('input[placeholder="Data de Nascimento"]');
-    const senha = document.querySelector('input[placeholder="Senha"]');
-    const confirmarSenha = document.querySelector('input[placeholder="Confirmar Senha"]');
+    const nome = document.getElementById('nomecomp');
+    const email = document.getElementById('email');
+    const usuario = document.getElementById('nome');
+    const dataNasc = document.getElementById('datansc');
+    const senha = document.getElementById('senha');
+    const confirmarSenha = document.getElementById('confsenha');
     const btn = document.querySelector('button');
 
     btn.addEventListener('click', () => {
