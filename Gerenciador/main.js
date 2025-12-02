@@ -51,6 +51,13 @@ const templateMenu = [
                     });
                 }
             },
+            { label: "Salvar",
+              accelerator: "CmdOrCtrl+S",
+              click: () => {
+                  janela.webContents.send("menu-salvar");
+              }
+            },
+            
             { type: "separator" },
             { role: "quit", label: "Sair" }
         ]
@@ -79,6 +86,55 @@ ipcMain.handle("salvar-arquivo", async (event, {caminho,conteudo}) => {
         return { sucesso: false, erro: err.message };
     }                       
 })
+
+// Arquivo onde tudo será guardado
+const caminhoTarefas = path.join(app.getPath("userData"), "tasks.json");
+
+// Função para carregar tarefas
+function lerTarefas() {
+    if (!fs.existsSync(caminhoTarefas)) return [];
+    return JSON.parse(fs.readFileSync(caminhoTarefas));
+}
+
+// Função para salvar tarefas
+function gravarTarefas(lista) {
+    fs.writeFileSync(caminhoTarefas, JSON.stringify(lista, null, 2));
+}
+
+// IPC para salvar tarefa
+ipcMain.handle("salvar-tarefa", async (event, dados) => {
+    let lista = lerTarefas();
+
+    lista.push({
+        data: dados.data,
+        tarefa: dados.texto,
+        criadoEm: new Date().toLocaleString()
+    });
+
+    gravarTarefas(lista);
+
+    // Cria lembrete automático
+    const hoje = new Date();
+    const dataTarefa = new Date(dados.data);
+
+    if (dataTarefa > hoje) {
+        const tempo = dataTarefa.getTime() - hoje.getTime();
+
+        setTimeout(() => {
+            new Notification({
+                title: "Lembrete",
+                body: dados.texto
+            }).show();
+        }, tempo);
+    }
+
+    return { sucesso: true };
+});
+
+// IPC para carregar o histórico
+ipcMain.handle("carregar-tarefas", () => {
+    return lerTarefas();
+});
 
 app.whenReady().then(() => {
     criarJanela();
